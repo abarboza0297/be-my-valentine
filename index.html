@@ -1,29 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Will You Be My Valentine?</title>
+  <title>Raya, Be My Valentine 🌿</title>
   <style>
     body {
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
       text-align: center;
-      padding-top: 100px;
+      background: linear-gradient(135deg, #9be15d, #00e3ae);
       overflow: hidden;
+      color: white;
     }
 
     h1 {
       font-size: 3em;
-      color: #fff;
+      margin-top: 80px;
+    }
+
+    h2 {
+      font-size: 2em;
     }
 
     p {
-      font-size: 1.5em;
-      color: #fff;
+      font-size: 1.4em;
+    }
+
+    .invite-box {
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+      display: inline-block;
     }
 
     .buttons {
       margin-top: 40px;
       position: relative;
+      height: 200px;
     }
 
     button {
@@ -48,21 +62,20 @@
     }
 
     #noBtn {
-      background-color: #444;
+      background-color: #2e2e2e;
       color: white;
       position: absolute;
     }
 
     #message {
-      margin-top: 50px;
+      margin-top: 40px;
       font-size: 2em;
-      color: white;
       display: none;
     }
 
-    .heart {
+    .leaf {
       position: fixed;
-      top: -10px;
+      top: -20px;
       font-size: 24px;
       animation: fall linear infinite;
     }
@@ -77,16 +90,26 @@
 
 <body>
 
-  <h1>Hey Beautiful ❤️</h1>
-  <p>I have a very important question...</p>
-  <h2>Will You Be My Valentine? 💘</h2>
+  <h1>Raya 🌿</h1>
+  <h2>I have a very important question...</h2>
+
+  <p>Will you be my Valentine? 💚</p>
+
+  <div class="invite-box">
+    <p>📅 February 14th</p>
+    <p>⏰ 3:45 PM</p>
+    <p>📍 Don Artemio</p>
+  </div>
 
   <div class="buttons">
     <button id="yesBtn" onclick="sayYes()">YES 💖</button>
-    <button id="noBtn" onmouseover="moveNo()">No 😏</button>
+    <button id="noBtn" onmouseover="moveNo()">No 🙈</button>
   </div>
 
-  <div id="message">I KNEW YOU WOULD SAY YES 😍❤️</div>
+  <div id="message">
+    I knew my plant queen would say yes 🌿💘<br><br>
+    See you at Don Artemio on Feb 14th at 3:45 ❤️
+  </div>
 
   <script>
     function moveNo() {
@@ -99,21 +122,21 @@
 
     function sayYes() {
       document.getElementById('message').style.display = 'block';
-      document.body.style.background = "linear-gradient(135deg, #ff4d6d, #ff758c)";
-      startHearts();
+      document.body.style.background = "linear-gradient(135deg, #ff758c, #ff7eb3)";
+      startLeaves();
     }
 
-    function startHearts() {
+    function startLeaves() {
       setInterval(() => {
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
-        document.body.appendChild(heart);
+        const leaf = document.createElement('div');
+        leaf.classList.add('leaf');
+        leaf.innerHTML = "🌿";
+        leaf.style.left = Math.random() * 100 + "vw";
+        leaf.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(leaf);
 
         setTimeout(() => {
-          heart.remove();
+          leaf.remove();
         }, 5000);
       }, 300);
     }
