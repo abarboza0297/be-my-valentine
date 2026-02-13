@@ -2,11 +2,12 @@
 <html>
 <head>
   <title>Raya, Be My Valentine 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       text-align: center;
       background: linear-gradient(135deg, #ff9a9e, #ff758c);
       overflow: hidden;
@@ -14,22 +15,18 @@
     }
 
     h1 {
-      font-size: 3em;
-      margin-top: 80px;
+      font-size: 2.5em;
+      margin-top: 60px;
     }
 
     h2 {
-      font-size: 2em;
-    }
-
-    p {
-      font-size: 1.4em;
+      font-size: 1.8em;
     }
 
     .invite-box {
-      margin-top: 30px;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.2);
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(255,255,255,0.2);
       border-radius: 20px;
       display: inline-block;
     }
@@ -37,7 +34,7 @@
     .buttons {
       margin-top: 40px;
       position: relative;
-      height: 250px;
+      height: 200px;
     }
 
     button {
@@ -48,28 +45,26 @@
       cursor: pointer;
       margin: 10px;
       transition: 0.3s;
+      position: relative;
     }
 
     #yesBtn {
       background-color: #ff4d6d;
       color: white;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       transform: scale(1);
-    }
-
-    #yesBtn:hover {
-      background-color: #ff1e4d;
     }
 
     #noBtn {
       background-color: #444;
       color: white;
       position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     #message {
-      margin-top: 40px;
-      font-size: 1.8em;
+      margin-top: 30px;
+      font-size: 1.5em;
       display: none;
     }
 
@@ -92,8 +87,7 @@
 
   <h1>Raya 💕</h1>
   <h2>I have a very important question...</h2>
-
-  <p>Will you be my Valentine? 💘</p>
+  <h2>Will you be my Valentine? 💘</h2>
 
   <div class="invite-box">
     <p>📅 February 14th</p>
@@ -102,8 +96,8 @@
   </div>
 
   <div class="buttons">
-    <button id="yesBtn" onclick="sayYes()">YES 💖</button>
-    <button id="noBtn" onmouseover="moveNo()">No 🙈</button>
+    <button id="yesBtn">YES 💖</button>
+    <button id="noBtn">No 🙈</button>
   </div>
 
   <div id="message">
@@ -115,31 +109,29 @@
   <script>
     let yesSize = 1;
 
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+
     function moveNo() {
-      const noBtn = document.getElementById('noBtn');
-      const yesBtn = document.getElementById('yesBtn');
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 100);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
 
-      // Move No button randomly
-      const x = Math.floor(Math.random() * window.innerWidth * 0.8);
-      const y = Math.floor(Math.random() * window.innerHeight * 0.6);
-      noBtn.style.left = x + 'px';
-      noBtn.style.top = y + 'px';
-
-      // Increase Yes button size
       yesSize += 0.2;
       yesBtn.style.transform = "scale(" + yesSize + ")";
     }
 
     function sayYes() {
-      document.getElementById('message').style.display = 'block';
+      document.getElementById("message").style.display = "block";
       document.body.style.background = "linear-gradient(135deg, #ff4d6d, #ff1e4d)";
       startRoses();
     }
 
     function startRoses() {
       setInterval(() => {
-        const rose = document.createElement('div');
-        rose.classList.add('rose');
+        const rose = document.createElement("div");
+        rose.classList.add("rose");
         rose.innerHTML = "🌹";
         rose.style.left = Math.random() * 100 + "vw";
         rose.style.animationDuration = (Math.random() * 3 + 2) + "s";
@@ -150,6 +142,14 @@
         }, 5000);
       }, 250);
     }
+
+    // Desktop hover
+    noBtn.addEventListener("mouseover", moveNo);
+
+    // Mobile tap
+    noBtn.addEventListener("click", moveNo);
+
+    yesBtn.addEventListener("click", sayYes);
   </script>
 
 </body>
