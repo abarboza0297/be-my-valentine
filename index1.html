@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Raya, Be My Valentine 🌿</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #9be15d, #00e3ae);
+      overflow: hidden;
+      color: white;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-top: 80px;
+    }
+
+    h2 {
+      font-size: 2em;
+    }
+
+    p {
+      font-size: 1.4em;
+    }
+
+    .invite-box {
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+      display: inline-block;
+    }
+
+    .buttons {
+      margin-top: 40px;
+      position: relative;
+      height: 200px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.3s;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.2);
+      background-color: #ff1e4d;
+    }
+
+    #noBtn {
+      background-color: #2e2e2e;
+      color: white;
+      position: absolute;
+    }
+
+    #message {
+      margin-top: 40px;
+      font-size: 2em;
+      display: none;
+    }
+
+    .leaf {
+      position: fixed;
+      top: -20px;
+      font-size: 24px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Raya 🌿</h1>
+  <h2>I have a very important question...</h2>
+
+  <p>Will you be my Valentine? 💚</p>
+
+  <div class="invite-box">
+    <p>📅 February 14th</p>
+    <p>⏰ 3:45 PM</p>
+    <p>📍 Don Artemio</p>
+  </div>
+
+  <div class="buttons">
+    <button id="yesBtn" onclick="sayYes()">YES 💖</button>
+    <button id="noBtn" onmouseover="moveNo()">No 🙈</button>
+  </div>
+
+  <div id="message">
+    I knew my plant queen would say yes 🌿💘<br><br>
+    See you at Don Artemio on Feb 14th at 3:45 ❤️
+  </div>
+
+  <script>
+    function moveNo() {
+      const noBtn = document.getElementById('noBtn');
+      const x = Math.floor(Math.random() * window.innerWidth * 0.8);
+      const y = Math.floor(Math.random() * window.innerHeight * 0.6);
+      noBtn.style.left = x + 'px';
+      noBtn.style.top = y + 'px';
+    }
+
+    function sayYes() {
+      document.getElementById('message').style.display = 'block';
+      document.body.style.background = "linear-gradient(135deg, #ff758c, #ff7eb3)";
+      startLeaves();
+    }
+
+    function startLeaves() {
+      setInterval(() => {
+        const leaf = document.createElement('div');
+        leaf.classList.add('leaf');
+        leaf.innerHTML = "🌿";
+        leaf.style.left = Math.random() * 100 + "vw";
+        leaf.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(leaf);
+
+        setTimeout(() => {
+          leaf.remove();
+        }, 5000);
+      }, 300);
+    }
+  </script>
+
+</body>
+</html>
